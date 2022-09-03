@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.upc.examen_zevallos.entidad.Paciente
 
-class AdaptadorPersonalizado : RecyclerView.Adapter<AdaptadorPersonalizado.AdaptadorVewHolder>() {
+class AdaptadorPersonalizado : RecyclerView.Adapter<AdaptadorPersonalizado.AdaptadorViewHolder>() {
 
     private var listaPaciente:List<Paciente> = ArrayList()
     private lateinit var context: Context
@@ -28,7 +28,7 @@ class AdaptadorPersonalizado : RecyclerView.Adapter<AdaptadorPersonalizado.Adapt
         this.listaPaciente = item
     }
 
-    class AdaptadorVewHolder (var view: View):RecyclerView.ViewHolder(view){
+    class AdaptadorViewHolder (var view: View):RecyclerView.ViewHolder(view){
         private var nombre = view.findViewById<TextView>(R.id.pacNombre)
         private var apellido = view.findViewById<TextView>(R.id.pacApellido)
         private var edad = view.findViewById<TextView>(R.id.pacEdad)
@@ -48,15 +48,15 @@ class AdaptadorPersonalizado : RecyclerView.Adapter<AdaptadorPersonalizado.Adapt
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)= AdaptadorVewHolder (
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)= AdaptadorViewHolder (
         LayoutInflater.from(parent.context).inflate(R.layout.fila,parent,false)
         )
 
-    override fun onBindViewHolder(holder: AdaptadorVewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AdaptadorViewHolder, position: Int) {
         val pacienteItem = listaPaciente[position]
         holder.bindView(pacienteItem)
         holder.pacEditar.setOnClickListener {
-            val intent = Intent(context,MainActivity::class.java)
+            val intent = Intent(context,EditarUsuarioActivity::class.java)
             intent.putExtra("id",listaPaciente[position].id.toString())
             intent.putExtra("nombre",listaPaciente[position].nombre)
             intent.putExtra("apellido",listaPaciente[position].apellido)
@@ -65,6 +65,7 @@ class AdaptadorPersonalizado : RecyclerView.Adapter<AdaptadorPersonalizado.Adapt
             intent.putExtra("telefono",listaPaciente[position].telefono.toString())
             intent.putExtra("email",listaPaciente[position].email)
             intent.putExtra("direccion",listaPaciente[position].direccion)
+            intent.putExtra("fecNac",listaPaciente[position].fecNacimiento)
             context.startActivity(intent)
         }
         holder.pacEliminar.setOnClickListener {

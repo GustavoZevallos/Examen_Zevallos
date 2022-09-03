@@ -11,7 +11,7 @@ import java.util.*
 class MostrarCalendarioFragment(val listener: (day: Int, month:Int, year:Int) -> Unit): DialogFragment(),
     DatePickerDialog.OnDateSetListener {
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-        listener(p3,p2,p1)
+        listener(p3,p2+1,p1)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

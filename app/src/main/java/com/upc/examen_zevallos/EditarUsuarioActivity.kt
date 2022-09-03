@@ -5,24 +5,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.upc.examen_zevallos.entidad.Paciente
 import com.upc.examen_zevallos.modelo.PacienteDAO
-import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class EditarUsuarioActivity : AppCompatActivity() {
 
-    private lateinit var txtNombre:EditText
-    private lateinit var txtApellido:EditText
-    private lateinit var txtDNI:EditText
-    private lateinit var txtEdad:EditText
-    private lateinit var txtTelefono:EditText
-    private lateinit var txtEmail:EditText
-    private lateinit var txtDireccion:EditText
-    private lateinit var txtFecNac:EditText
-    private lateinit var btnRegistrar:Button
+    private lateinit var txtNombre: EditText
+    private lateinit var txtApellido: EditText
+    private lateinit var txtDNI: EditText
+    private lateinit var txtEdad: EditText
+    private lateinit var txtTelefono: EditText
+    private lateinit var txtEmail: EditText
+    private lateinit var txtDireccion: EditText
+    private lateinit var txtFecNac: EditText
+    private lateinit var btnActualizar: Button
 
     var pacienteDAO: PacienteDAO = PacienteDAO(this)
     private var modificar:Boolean = false
@@ -30,11 +28,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_editar_usuario)
         asignarReferencias()
-        //recuperarDatos()
+        recuperarDatos()
     }
-
     private fun mostrarCalendario() {
         val selecDia = MostrarCalendarioFragment { day, month, year -> onDateSelected(day, month, year)}
         selecDia.show(supportFragmentManager,"selecDia")
@@ -44,10 +41,9 @@ class MainActivity : AppCompatActivity() {
         txtFecNac.setText("$day/$month/$year")
     }
 
-/*    private fun recuperarDatos(){
+    private fun recuperarDatos(){
         if(intent.hasExtra("id")){
             modificar = true
-            //setContentView(R.layout.activity_modificar)
             id = intent.getStringExtra("id")?.toInt()?:0
             txtNombre.setText(intent.getStringExtra("nombre"))
             txtApellido.setText(intent.getStringExtra("apellido"))
@@ -58,7 +54,7 @@ class MainActivity : AppCompatActivity() {
             txtDireccion.setText(intent.getStringExtra("direccion"))
             txtFecNac.setText(intent.getStringExtra("fecNac"))
         }
-    }*/
+    }
 
     private fun asignarReferencias(){
         txtNombre = findViewById(R.id.txtNombre)
@@ -72,13 +68,13 @@ class MainActivity : AppCompatActivity() {
         txtFecNac.setOnClickListener {
             mostrarCalendario()
         }
-        btnRegistrar = findViewById(R.id.btnRegistrar)
-        btnRegistrar.setOnClickListener{
-            registrarPaciente()
+        btnActualizar = findViewById(R.id.btnActualizar)
+        btnActualizar.setOnClickListener{
+            actualizarPaciente()
         }
     }
 
-    private fun registrarPaciente(){
+    private fun actualizarPaciente(){
         val nombre = txtNombre.text.toString()
         val apellido = txtApellido.text.toString()
         val dni = txtDNI.text.toString()
@@ -88,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         val direccion = txtDireccion.text.toString()
         val fecNacimiento = txtFecNac.text.toString()
 
-        if(nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty() || edad.isEmpty()|| telefono.isEmpty()||email.isEmpty()||direccion.isEmpty()||fecNacimiento.isEmpty()){
+        if(nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty() || edad.isEmpty()){
             Toast.makeText(this,"Completar los campos obligatorios", Toast.LENGTH_LONG).show()
         }else{
             val pac = Paciente()
@@ -111,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                 mensaje = pacienteDAO.registrarPaciente(pac)
             }
             mostrarMensaje(mensaje)
-            limpiarCajas()
+
         }
     }
 
@@ -124,16 +120,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         ventana.create().show()
-    }
-
-    private fun limpiarCajas(){
-        txtNombre.setText("")
-        txtApellido.setText("")
-        txtDNI.setText("")
-        txtEdad.setText("")
-        txtTelefono.setText("")
-        txtEmail.setText("")
-        txtDireccion.setText("")
-        txtFecNac.setText("")
     }
 }

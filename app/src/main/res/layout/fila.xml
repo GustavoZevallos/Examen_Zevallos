@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/box_formulario">
+
+            <ImageView
+                android:id="@+id/fotoPaciente"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/persona" />
+
+            <TextView
+                android:id="@+id/pacNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="cursive"
+                android:textSize="23sp"
+                android:text="Nombre"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/fotoPaciente"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/pacApellido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:textSize="23sp"
+                android:fontFamily="cursive"
+                android:text="Apellido"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/pacNombre"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/icoEdad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintStart_toEndOf="@+id/fotoPaciente"
+                app:layout_constraintTop_toBottomOf="@+id/pacNombre"
+                app:srcCompat="@drawable/ic_edad_24" />
+
+            <TextView
+                android:id="@+id/pacEdad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="edad"
+                app:layout_constraintStart_toEndOf="@+id/icoEdad"
+                app:layout_constraintTop_toBottomOf="@+id/pacNombre" />
+
+            <ImageView
+                android:id="@+id/icoPhoneContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toEndOf="@+id/fotoPaciente"
+                app:layout_constraintTop_toBottomOf="@+id/icoEdad"
+                app:srcCompat="@drawable/ic_phone" />
+
+            <TextView
+                android:id="@+id/pacTelefono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Telefono"
+                app:layout_constraintStart_toEndOf="@+id/icoPhoneContact"
+                app:layout_constraintTop_toBottomOf="@+id/pacEdad" />
+
+            <ImageView
+                android:id="@+id/icoMailContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toEndOf="@+id/fotoPaciente"
+                app:layout_constraintTop_toBottomOf="@+id/icoPhoneContact"
+                app:srcCompat="@drawable/ic_contact_mail" />
+
+            <TextView
+                android:id="@+id/pacEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="email"
+                app:layout_constraintStart_toEndOf="@+id/icoMailContact"
+                app:layout_constraintTop_toBottomOf="@+id/pacTelefono" />
+
+            <ImageButton
+                android:id="@+id/pacEditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/lilaFondoSA"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_edit"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/pacEliminar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="22dp"
+                android:backgroundTint="@color/lilaFondoSA"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_delete"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

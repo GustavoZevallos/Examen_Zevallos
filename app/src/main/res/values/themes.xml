@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Examen_Zevallos" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/AzulFondoSA</item>
+        <item name="colorPrimaryVariant">@color/AzulFondoSA</item>
+        <item name="colorOnPrimary">@color/RosaFondoSA</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/verdeFondoSA</item>
+        <item name="colorSecondaryVariant">@color/amarilloFondoSA</item>
+        <item name="colorOnSecondary">@color/Blanco</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="SplashTheme" parent="Theme.AppCompat">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+</resources>
